@@ -1,0 +1,8 @@
+.footer{
+    background-color: black;
+    position: fixed;
+    bottom: 1vw;
+    width: 80vw;
+    padding: 1vw;
+    border-radius: 10px;
+}

@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    height: 7vh;
+    align-items: center;
+    width: 100vw;
+    background: linear-gradient(to top right, #1A1A1A 0%, #242424 100%);
+    font: italic small-caps bold 16px/2 cursive;
+    width: auto;
+    border-radius: 10px;
+    padding-left: 1vw;
+}
+
+img {
+    height: 7vh;
+    margin-right: 1vw;
+}
+
+.nav {
+    margin-left: 2vw;
+    color: aliceblue;
+    font-weight: 500;
+    align-items: flex-end;
+
+}
+
+.nav:hover {
+    color: #FFCC66;
+    cursor: pointer;
+}
