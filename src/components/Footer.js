@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div>
       <div className='footer'>
-        Copyright held by someone from IIIT Kalyani
+      &#169;Copyright held by someone from IIIT Kalyani
         </div>
     </div>
   )

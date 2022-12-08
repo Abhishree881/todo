@@ -2,10 +2,9 @@
     display: flex;
     height: 7vh;
     align-items: center;
-    width: 100vw;
     background: linear-gradient(to top right, #1A1A1A 0%, #242424 100%);
     font: italic small-caps bold 16px/2 cursive;
-    width: auto;
+    width: 81vw;
     border-radius: 10px;
     padding-left: 1vw;
 }
