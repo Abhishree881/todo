@@ -1,8 +1,11 @@
 .create{
     padding: 10vh 1vh 1vh 1vh;
-    min-height: 78vh;
+    min-height: 76vh;
+    margin-bottom: 2vh;
+    border-radius: 10px;
     color: black;
     font: italic small-caps bold 16px/2 cursive;
+    box-shadow: 2px 5px 5px grey;
 }
 input[type=text],
 select {
@@ -29,5 +32,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: lawngreen;
+    box-shadow: 5px 5px 5px lightgreen;
+    
 }

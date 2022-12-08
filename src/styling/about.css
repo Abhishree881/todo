@@ -1,7 +1,10 @@
 .about{
     padding: 5vh 1vh 1vh 1vh;
-    min-height: 83vh;
+    min-height: 81vh;
     font: italic small-caps bold 16px/2 cursive;
+    box-shadow: 2px 5px 5px grey;
+    border-radius: 10px;
+    margin-bottom: 2vh;
 }
 .aboutHead{
     background-color: white;

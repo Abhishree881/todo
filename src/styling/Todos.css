@@ -5,12 +5,14 @@
     width: 80vw;
     font: italic small-caps bold 16px/2 cursive;
     color: beige    ;
+    box-shadow: 2px 5px 5px grey;
 }
 .head{
     background-color: black;
     border-radius: 10px;
     text-align: center; 
     padding: 5px 10px 5px 10px;
+    box-shadow: 2px 5px 5px grey;
 }
 .noTodo{
     padding-top: 10vh;
@@ -29,8 +31,12 @@ button{
     color: whitesmoke;
     text-align: center;
     font: italic small-caps bold 16px/2 cursive;    
-    transition: 0.5s;
+    transition: 0.1s;
+    box-shadow: 5px 4px 4px grey;
 }
 button:hover{
-    background-color: #808080;
+    background-color: white;
+    color: grey;
+    border: navajowhite;
+    box-shadow: 5px 5px 5px navajowhite;
 }

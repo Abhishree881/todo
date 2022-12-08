@@ -15,9 +15,16 @@
     background-color: black;
     border-radius: 10px;
     color:beige;
-    padding: 1vw;
+    padding: 1vw 2vw 1vw 2vw;
     width: auto;
+    transition: 1s ease-in-out;
 }
-.completed:hover{
+.todo:hover{
+    background-color: white;
+    color: gray;
+    border : navajowhite 1px solid;
+    box-shadow: 2px 5px 5px navajowhite;
+}
+.todo:hover .completed{
     background-color: lawngreen;
 }
