@@ -8,30 +8,49 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   const onComplete = (todo) => {
-    console.log("i am todo of ", todo);
     SetTodo(
       todos.filter((e) => {
         return e !== todo;
       })
     );
   };
-  const [todos, SetTodo] = useState([
-    {
-      sno: 1,
-      title: "Complete React",
-      desc: "You need to complete react with alteast one project",
-    },
-    {
-      sno: 2,
-      title: "Complete node.js",
-      desc: "You need to complete node for backend",
-    },
-    {
-      sno: 3,
-      title: "Complete mongodb",
-      desc: "You need to complete mongodb for background",
-    },
-  ]);
+
+  const addTodo = (title, desc) => {
+    let sno = 0;
+    if (todos.length == 0) {
+      let sno = 1;
+    } else {
+      let sno = todos[todos.length - 1].sno + 1;
+    }
+    console.log(sno);
+    const myTodo = {
+      sno: sno,
+      title: title,
+      desc: desc,
+    };
+    console.log(myTodo);
+    SetTodo([...todos, myTodo]);
+    console.log(todos);
+  };
+
+  const [todos, SetTodo] = useState("");
+  //   [
+  //   {
+  //     sno: 1,
+  //     title: "Complete React",
+  //     desc: "You need to complete react with alteast one project",
+  //   },
+  //   {
+  //     sno: 2,
+  //     title: "Complete node.js",
+  //     desc: "You need to complete node for backend",
+  //   },
+  //   {
+  //     sno: 3,
+  //     title: "Complete mongodb",
+  //     desc: "You need to complete mongodb for background",
+  //   },
+  // ]);
 
   return (
     <div className="App">
@@ -42,7 +61,7 @@ function App() {
           path="/"
           element={<Home todos={todos} onComplete={onComplete} />}
         />
-        <Route path="create" element={<AddTodo />} />
+        <Route path="create" element={<AddTodo addTodo={addTodo} />} />
         <Route path="about" element={<About />} />
       </Routes>
       <Footer />

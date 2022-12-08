@@ -21,12 +21,12 @@ export default function Todos(props) {
         </>
       ) : (
         <div className="noTodo">
-          <h1 className="noTodHead">
+          <h1 className="noTodoHead">
             There are no tasks to display, start by creating one now :)
           </h1>
-          <button>
-            <Link to="create">Create</Link>
-          </button>
+          <Link to="create">
+            <button>Create</button>
+          </Link>
         </div>
       )}
     </div>

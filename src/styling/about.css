@@ -4,8 +4,9 @@
     font: italic small-caps bold 16px/2 cursive;
 }
 .aboutHead{
-    background-color: #1a1a1a;
-    color: beige;
+    background-color: white;
+    border: solid black 1px ;
+    color: gray;
     border-radius: 10px;
     padding: 1vw;
 }

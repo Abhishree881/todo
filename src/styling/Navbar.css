@@ -18,12 +18,12 @@ img {
 
 .nav {
     margin-left: 2vw;
-    color: aliceblue;
+    color: beige;
     font-weight: 500;
     align-items: flex-end;
 }
 a{
-    color: aliceblue;
+    color: beige;
     text-decoration: none ;
 }
 

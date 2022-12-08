@@ -1,43 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { useCallback } from "react";
 import "../styling/create.css";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function AddTodo() {
+export default function AddTodo(props) {
+  const [title, settitle] = useState("");
+  const [desc, setdesc] = useState("");
+  const submit = (e) => {
+    e.preventDefault();
+    if (!title || !desc) {
+      alert("Title or Description can not be blank");
+    } else {
+      props.addTodo(title, desc);
+      handleOnClick();
+    }
+  };
+  let navigate = useNavigate();
+  const handleOnClick = useCallback(
+    () => navigate("/", { replace: true }),
+    [navigate]
+  );
   return (
     <div className="create">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Email address
-          </label>
+      <form onSubmit={submit}>
+        <div className="mb-3">
+          <label className="form-label">Title</label>
           <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
+            type="text"
+            className="form-control"
+            value={title}
+            onChange={(e) => {
+              settitle(e.target.value);
+            }}
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
+        <div className="mb-3">
+          <label className="form-label">Description</label>
+          <input
+            type="text"
+            className="form-control"
+            value={desc}
+            onChange={(e) => {
+              setdesc(e.target.value);
+            }}
+          />
         </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
-        </button>
+        <input type="submit" value="Create" />
       </form>
     </div>
   );
