@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: aliceblue;
+  background-color: beige;
   color: aliceblue;
-  min-height: 100vh;
-  margin: 1vw 10vw 0 10vw;
+  margin: 1vh 10vw 1vh 10vw;
+  display: flex;
 }
 
 code {

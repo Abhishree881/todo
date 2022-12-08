@@ -3,7 +3,9 @@
     border-radius: 30px;
     padding: 8px 25px 8px 25px;
     align-content: center;
-    width:max-content;
+    width:auto;
+    color:whitesmoke;
+    text-align: center;
     cursor: pointer;
     transition: 0.5s;
     margin-left: 1vw;
@@ -14,7 +16,7 @@
     border-radius: 10px;
     color:aliceblue;
     padding: 1vw;
-    width: fit-content;
+    width: auto;
 }
 .completed:hover{
     background-color: lawngreen;

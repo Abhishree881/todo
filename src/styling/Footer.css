@@ -1,9 +1,10 @@
 .footer{
     background-color: black;
-    position: relative;
-    bottom: 1vw;
+    position: relative   ;
+    bottom: 0vh;
     width: 80vw;
     padding: 1vw;
     text-align: center;
     border-radius: 10px;
+    font: italic small-caps bold 16px/2 cursive;
 }

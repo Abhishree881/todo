@@ -1,8 +1,36 @@
 .container{
     border-radius: 10px;
-    padding: 1vw;
-    margin: 1vw 0 1vw 0;
-    min-height: 76vh;
+    padding: 5vh 1vh 1vh 1vh;
+    min-height: 80vh;
     width: 80vw;
-    color: black;
+    font: italic small-caps bold 16px/2 cursive;
+    color: aliceblue    ;
+}
+.head{
+    background-color: black;
+    border-radius: 10px;
+    text-align: center; 
+    padding: 5px 10px 5px 10px;
+}
+.noTodo{
+    padding-top: 10vh;
+    color: grey;
+    text-align: center;
+    font: italic small-caps bold 16px/2 cursive;
+}
+button{
+    background-color: black;
+    cursor: pointer;
+    font-size: 4vh;
+    border-radius: 30px;
+    padding: 2vh 5vw 2vh 5vw;
+    align-content: center;
+    width: auto;
+    color: whitesmoke;
+    text-align: center;
+    font: italic small-caps bold 16px/2 cursive;    
+    transition: 0.5s;
+}
+button:hover{
+    background-color: #808080;
 }

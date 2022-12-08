@@ -1,8 +1,9 @@
 import React from "react";
+import "../styling/create.css";
 
 export default function AddTodo() {
   return (
-    <div>
+    <div className="create">
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">

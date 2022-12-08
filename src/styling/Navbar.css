@@ -1,5 +1,7 @@
 .navbar {
     display: flex;
+    position: fixed;
+    top:0vh;
     height: 7vh;
     align-items: center;
     background: linear-gradient(to top right, #1A1A1A 0%, #242424 100%);
@@ -19,10 +21,13 @@ img {
     color: aliceblue;
     font-weight: 500;
     align-items: flex-end;
-
+}
+a{
+    color: aliceblue;
+    text-decoration: none ;
 }
 
-.nav:hover {
+a:hover {
     color: #FFCC66;
     cursor: pointer;
 }
