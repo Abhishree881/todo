@@ -23,12 +23,16 @@ img {
     font-weight: 500;
     align-items: flex-end;
 }
-a{
+.login{
+    right: 2vw;
+    position: absolute;
+}
+.a{
     color: beige;
     text-decoration: none ;
 }
 
-a:hover {
+.a:hover {
     color: #FFCC66;
     cursor: pointer;
 }

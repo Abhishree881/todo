@@ -22,11 +22,19 @@ export default function Todos(props) {
       ) : (
         <div className="noTodo">
           <h1 className="noTodoHead">
-            There are no tasks to display, start by creating one now :)
+            {props.name
+              ? "There are no tasks to display, start by creating one now :)"
+              : "There are no tasks to display, start by logging in now :)"}
           </h1>
-          <Link to="create">
-            <button>Create</button>
-          </Link>
+          {props.name ? (
+            <Link to="create">
+              <button>Create</button>
+            </Link>
+          ) : (
+            <Link to="signup">
+              <button>SignUp</button>
+            </Link>
+          )}
         </div>
       )}
     </div>

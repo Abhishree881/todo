@@ -1,10 +1,12 @@
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import AddTodo from "./components/AddTodo";
 import About from "./components/About";
 import Home from "./components/Home";
-import React, { useState } from "react";
+import Signup from "./components/Signup";
+import { auth } from "./firebase";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
 
 function App() {
   const onComplete = (todo) => {
@@ -17,20 +19,18 @@ function App() {
 
   const addTodo = (title, desc) => {
     let sno = 0;
-    if (todos.length == 0) {
-      let sno = 1;
+    if (todos.length === 0) {
+      sno = 1;
     } else {
-      let sno = todos[todos.length - 1].sno + 1;
+      sno = todos[todos.length - 1].sno + 1;
     }
-    console.log(sno);
     const myTodo = {
       sno: sno,
       title: title,
       desc: desc,
     };
-    console.log(myTodo);
     SetTodo([...todos, myTodo]);
-    console.log(todos);
+    //console.log(todos);
   };
 
   const [todos, SetTodo] = useState("");
@@ -52,19 +52,33 @@ function App() {
   //   },
   // ]);
 
+  const [userName, SetUserName] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        SetUserName(user.displayName);
+        // window.location.reload();
+      } else SetUserName("");
+    });
+  }, []);
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar name={userName} />
       <Routes>
         <Route
           exact
           path="/"
-          element={<Home todos={todos} onComplete={onComplete} />}
+          element={
+            <Home todos={todos} name={userName} onComplete={onComplete} />
+          }
         />
+        <Route path="signup" element={<Signup />} />
+        <Route path="login" element={<Login />} />
         <Route path="create" element={<AddTodo addTodo={addTodo} />} />
         <Route path="about" element={<About />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

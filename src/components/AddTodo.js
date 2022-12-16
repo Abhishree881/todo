@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useCallback } from "react";
 import "../styling/create.css";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 export default function AddTodo(props) {
   const [title, settitle] = useState("");
@@ -22,32 +21,36 @@ export default function AddTodo(props) {
     [navigate]
   );
   return (
-    <div className="create">
-      <form onSubmit={submit}>
-        <div className="mb-3">
-          <label className="form-label">Title</label>
-          <input
-            type="text"
-            className="form-control"
-            value={title}
-            onChange={(e) => {
-              settitle(e.target.value);
-            }}
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Description</label>
-          <input
-            type="text"
-            className="form-control"
-            value={desc}
-            onChange={(e) => {
-              setdesc(e.target.value);
-            }}
-          />
-        </div>
-        <input type="submit" value="Create" />
-      </form>
+    <div className="form">
+      <div className="create">
+        <form onSubmit={submit}>
+          <div className="mb-3">
+            <label className="form-label">Title</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter title of your task"
+              value={title}
+              onChange={(e) => {
+                settitle(e.target.value);
+              }}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Description</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Briefly describe your task"
+              value={desc}
+              onChange={(e) => {
+                setdesc(e.target.value);
+              }}
+            />
+          </div>
+          <input type="submit" value="Create" />
+        </form>
+      </div>
     </div>
   );
 }
