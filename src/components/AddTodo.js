@@ -6,12 +6,23 @@ import { useNavigate } from "react-router-dom";
 export default function AddTodo(props) {
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
+  const [time, settime] = useState("");
+
   const submit = (e) => {
     e.preventDefault();
-    if (!title || !desc) {
-      alert("Title or Description can not be blank");
+    function isInThePast(date) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      return date < today;
+    }
+    if (!title || !desc || !time) {
+      alert("Title or Description or Date can not be blank");
+    } else if (isInThePast(new Date(time))) {
+      alert("Date can not be in past");
     } else {
-      props.addTodo(title, desc);
+      props.onUpdateActiveLink("home");
+      props.addTodo(title, desc, time);
       handleOnClick();
     }
   };
@@ -46,6 +57,17 @@ export default function AddTodo(props) {
               value={desc}
               onChange={(e) => {
                 setdesc(e.target.value);
+              }}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Due Date</label>
+            <input
+              type="date"
+              className="form-control"
+              value={time}
+              onChange={(e) => {
+                settime(e.target.value);
               }}
             />
           </div>

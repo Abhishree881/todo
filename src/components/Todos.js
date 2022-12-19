@@ -27,11 +27,14 @@ export default function Todos(props) {
               : "There are no tasks to display, start by logging in now :)"}
           </h1>
           {props.name ? (
-            <Link to="create">
+            <Link
+              onClick={() => props.onUpdateActiveLink("create")}
+              to="create"
+            >
               <button className="button">Create</button>
             </Link>
           ) : (
-            <Link to="signup">
+            <Link to="signup" onClick={() => props.onUpdateActiveLink("login")}>
               <button className="button">SignUp</button>
             </Link>
           )}

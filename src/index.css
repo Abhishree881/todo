@@ -84,6 +84,21 @@ select {
   box-shadow: 2px 5px 5px grey;
 }
 
+input[type=date],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  color: grey;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font: italic small-caps bold 16px/2 cursive;
+  box-shadow: 2px 5px 5px grey; 
+  cursor: text;
+}
+
 input[type=submit] {
   width: 90%;
   background-color: #4CAF50;

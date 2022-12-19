@@ -18,7 +18,7 @@ function App() {
     );
   };
 
-  const addTodo = (title, desc) => {
+  const addTodo = (title, desc, time) => {
     let sno = 0;
     if (todos.length === 0) {
       sno = 1;
@@ -29,6 +29,7 @@ function App() {
       sno: sno,
       title: title,
       desc: desc,
+      time: time,
     };
     SetTodo([...todos, myTodo]);
     //console.log(todos);
@@ -64,20 +65,62 @@ function App() {
     });
   }, []);
 
+  const [activeLink, setActiveLink] = useState("home");
+
+  const onUpdateActiveLink = (value) => {
+    setActiveLink(value);
+    // window.location.reload();
+  };
+
   return (
     <div className="App">
-      <Navbar name={userName} />
+      <Navbar
+        name={userName}
+        activeLink={activeLink}
+        onUpdateActiveLink={onUpdateActiveLink}
+      />
       <Routes>
         <Route
           exact
           path="/"
           element={
-            <Home todos={todos} name={userName} onComplete={onComplete} />
+            <Home
+              todos={todos}
+              name={userName}
+              onComplete={onComplete}
+              activeLink={activeLink}
+              onUpdateActiveLink={onUpdateActiveLink}
+            />
           }
         />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
-        <Route path="create" element={<AddTodo addTodo={addTodo} />} />
+        <Route
+          path="signup"
+          element={
+            <Signup
+              activeLink={activeLink}
+              onUpdateActiveLink={onUpdateActiveLink}
+            />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <Login
+              activeLink={activeLink}
+              onUpdateActiveLink={onUpdateActiveLink}
+            />
+          }
+        />
+        <Route
+          path="create"
+          element={
+            <AddTodo
+              addTodo={addTodo}
+              activeLink={activeLink}
+              onUpdateActiveLink={onUpdateActiveLink}
+            />
+          }
+        />
         <Route path="about" element={<About />} />
       </Routes>
       <Sidebar />

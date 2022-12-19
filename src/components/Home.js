@@ -10,6 +10,8 @@ export default function Home(props) {
         todos={props.todos}
         name={props.name}
         onComplete={props.onComplete}
+        activeLink={props.activeLink}
+        onUpdateActiveLink={props.onUpdateActiveLink}
       />
     </div>
   );

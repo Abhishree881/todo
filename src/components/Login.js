@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import "../styling/signup.css";
 
-export default function Signup() {
+export default function Signup({ activeLink, onUpdateActiveLink }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const submit = (e) => {
@@ -20,12 +20,13 @@ export default function Signup() {
           const user = res.user;
           console.log(user.displayName);
           handleOnClick();
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((err) => {
           //console.log(err);
           alert(err.message);
         });
+      onUpdateActiveLink("home");
     }
   };
   let navigate = useNavigate();

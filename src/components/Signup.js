@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 import "../styling/signup.css";
 
-export default function Signup() {
+export default function Signup({ activeLink, onUpdateActiveLink }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,12 +21,13 @@ export default function Signup() {
           const user = res.user;
           updateProfile(user, { displayName: name });
           handleOnClick();
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((err) => {
           //console.log(err);
           alert(err.message);
         });
+      onUpdateActiveLink("home");
     }
   };
   let navigate = useNavigate();

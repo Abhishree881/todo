@@ -5,11 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
-export default function Navbar({ name }) {
-  const [activeLink, setActiveLink] = useState("home");
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
+export default function Navbar({ name, activeLink, onUpdateActiveLink }) {
   return (
     <div className="navbar">
       <div className="nav-main">
