@@ -44,7 +44,7 @@ export default function AddTodo(props) {
       <div className="create">
         <h1>Create Task</h1>
         <form onSubmit={submit}>
-          <div className="mb-3">
+          <div className="mbp">
             <label className="form-label">Title</label>
             <input
               type="text"

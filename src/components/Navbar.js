@@ -4,8 +4,14 @@ import "../styling/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import swal from "sweetalert";
 
-export default function Navbar({ name, activeLink, onUpdateActiveLink }) {
+export default function Navbar({
+  name,
+  activeLink,
+  onUpdateActiveLink,
+  todos,
+}) {
   return (
     <div className="navbar">
       <div className="nav-main">
@@ -23,10 +29,13 @@ export default function Navbar({ name, activeLink, onUpdateActiveLink }) {
                   signOut(auth)
                     .then(() => {
                       // Sign-out successful.
+                      swal("Signed Out", "Sign Out Successful", "success");
                     })
                     .catch((error) => {
                       // An error happened.
                     });
+                  todos.length = 0;
+                  console.log(todos);
                 }}
               >
                 {`${name}`}{" "}

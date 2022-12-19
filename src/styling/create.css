@@ -19,3 +19,14 @@
     padding-left: 2vh;  
     /* border: 2px solid black; */
 }
+@media (max-width:1080px) {
+    .formm {
+        grid-column-start: first;
+        grid-column-end: end;
+        grid-row-start: row1-start;
+        grid-row-end: last-line;
+    }
+    .form-label{
+        padding: 0;
+    }
+}

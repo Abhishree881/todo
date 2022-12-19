@@ -78,6 +78,7 @@ function App() {
         name={userName}
         activeLink={activeLink}
         onUpdateActiveLink={onUpdateActiveLink}
+        todos={todos}
       />
       <Routes>
         <Route

@@ -60,6 +60,17 @@
 }
 .mobile .button{
     display: none;
+    text-decoration: none;
+}
+
+.mobilesign{
+    display: none;
+}
+.mobilename{
+    display: none;
+}
+.mobilehover{
+    display: none;
 }
 @media (max-width:1080px) {
     .mobile{
@@ -70,9 +81,41 @@
     .mobile .button{
         align-self: center;
         display: inline;
+        text-decoration: none;
     }
     .head{
         width: 60vw;
         align-self: center;
+    }
+    .mobilesign{
+        display: flex;
+        /* background-color: #F1FDCD; */
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.8;
+    }
+    .mobilename{
+        display: inline;
+        align-self: center;
+        /* background-image: url('../components/bg.jpg') */
+        background-color:#F1FDCD;
+        border-radius: 20px;
+        border: 5px solid black;
+        color: black;
+        font-size: 3vh;
+        padding: 2vh;
+        width:60vw;
+        cursor: pointer;
+        text-align: center;
+    }
+    .mobilehover{
+        display: inline;
+        background-image: url('../components/bg.jpg');
+        opacity: 0;
+        margin-top: 1vh;
+        padding: 1px 5px 1px 5px;
+    }
+    .mobilename:hover + .mobilehover{
+        opacity: 1;
     }
 }

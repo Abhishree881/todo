@@ -59,8 +59,8 @@ select {
 input[type=email],
 select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 1vh 2vh;
+    margin: 1vh 0;
   color: grey;
   display: inline-block;
   border: 1px solid #ccc;
@@ -73,8 +73,8 @@ select {
 input[type=password],
 select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 1vh 2vh;
+    margin: 1vh 0;
   color: grey;
   display: inline-block;
   border: 1px solid #ccc;
@@ -87,8 +87,8 @@ select {
 input[type=date],
 select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 1vh 2vh;
+    margin: 1vh 0;
   color: grey;
   display: inline-block;
   border: 1px solid #ccc;
@@ -103,8 +103,8 @@ input[type=submit] {
   width: 90%;
   background-color: #4CAF50;
   color: beige;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 1vh 2vh;
+    margin: 1vh 0;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -138,6 +138,10 @@ input[type=submit]:hover {
       grid-column-end: end;
       grid-row-start: row1-start;
       grid-row-end: last-line;
+  }
+  .create{
+    padding: 2vh;
+    width:90vh
   }
 }
 
