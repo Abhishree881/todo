@@ -11,11 +11,19 @@ export default function Todos(props) {
           <h1 className="head">Your Tasks</h1>
           {props.todos.map((todo) => {
             return (
-              <TodoItem
-                todo={todo}
-                key={todo.sno}
-                onComplete={props.onComplete}
-              />
+              <div className="mobile">
+                <TodoItem
+                  todo={todo}
+                  key={todo.sno}
+                  onComplete={props.onComplete}
+                />
+                <Link
+                  onClick={() => props.onUpdateActiveLink("create")}
+                  to="create"
+                >
+                  <button className="button">Create</button>
+                </Link>
+              </div>
             );
           })}
         </>
