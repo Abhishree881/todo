@@ -21,8 +21,9 @@ export default function AddTodo(props) {
     [navigate]
   );
   return (
-    <div className="form">
+    <div className="formm">
       <div className="create">
+        <h1>Create Task</h1>
         <form onSubmit={submit}>
           <div className="mb-3">
             <label className="form-label">Title</label>

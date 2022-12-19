@@ -1,17 +1,42 @@
 .about{
-    padding: 5vh 1vh 1vh 1vh;
-    min-height: 81vh;
+    margin: 3vh 1.5vh 3vh 1.5vh;
+    /* min-height: 81vh; */
     font: italic small-caps bold 16px/2 cursive;
-    box-shadow: 2px 5px 5px grey;
+    /* box-shadow: 2px 5px 5px grey; */
     border-radius: 10px;
-    background-color: beige;
-    margin-bottom: 2vh;
+    background-color: rgba(98, 218, 218, 0.088);
+    display: flex;
+    flex-direction: column;
+    /* margin-bottom: 2vh; */
+    grid-column-start: line2;
+    grid-column-end: line3;
+    grid-row-start: row1-start;
+    grid-row-end: last-line;
 }
 .aboutHead{
-    background-color: white;
-    border: solid black 1px ;
-    color: gray;
+    border: solid black 5px ;
+    color: black;
+    border-radius: 20px;
+    margin: 2vw;
+    padding: 2vw;
+    overflow-y: scroll;
+    height: 69vh;
+    background-color: #F1FDCD;
+    text-align: justify;
+    /* box-shadow: 2px 5px 5px grey; */
+}
+.aboutHead h2{
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: url('../components/bg.jpg');
+    color: transparent;
+}
+.aboutHead::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.aboutHead::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    padding: 1vw;
-    box-shadow: 2px 5px 5px grey;
+    -webkit-box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.5);
 }

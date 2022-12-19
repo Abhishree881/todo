@@ -14,77 +14,11 @@
     font: italic small-caps bold 16px/2 cursive;
     box-shadow: 2px 5px 5px grey;
 }
-.create{
-    width: 40vw;
-    height: fit-content;
-    background-color: lightblue;
-    box-shadow: 2px 5px 5px grey;
-}
 
 .form-label {
     padding-left: 2vh;
 }
 
-input[type=text],
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    color: grey;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font: italic small-caps bold 16px/2 cursive;
-    box-shadow: 2px 5px 5px grey;
-}
-
-input[type=email],
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    color: grey;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font: italic small-caps bold 16px/2 cursive;
-    box-shadow: 2px 5px 5px grey;
-}
-
-input[type=password],
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    color: grey;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font: italic small-caps bold 16px/2 cursive;
-    box-shadow: 2px 5px 5px grey;
-}
-
-input[type=submit] {
-    width: 90%;
-    background-color: #4CAF50;
-    color: beige;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font: italic small-caps bold 16px/2 cursive;
-    box-shadow: 2px 5px 5px grey;
-    margin: 5%;
-}
-
-input[type=submit]:hover {
-    background-color: lawngreen;
-    box-shadow: 5px 5px 5px lightgreen;
-}
 
 .user {
     color: black;

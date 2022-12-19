@@ -1,0 +1,15 @@
+.react-calendar {
+    /* background: linear-gradient(to left, #32675c 0%, #689a77 100%); */
+    margin: 3vh 3vh 3vh 1.5vh;
+    height: 43vh;
+    border-radius: 20px;
+    padding: 10px;
+}
+.test{
+    /* background-color: rgba(98, 218, 218, 0.249); */
+    /* background: linear-gradient(to left, #32675c 0%, #689a77 100%); */
+    margin: 3vh 3vh 3vh 1.5vh;
+    height: 43vh;
+    border-radius: 20px;
+    padding: 10px;
+}

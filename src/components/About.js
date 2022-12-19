@@ -4,27 +4,26 @@ import "../styling/about.css";
 
 function About() {
   return (
-    <>
-      <div className="about">
-        <h2 className="aboutHead">
-          Magna voluptate tempor elit id ex ad enim anim. Aliquip sint laboris
-          id ex nostrud sunt proident enim officia. Fugiat deserunt tempor esse
-          id et sunt tempor eiusmod quis ipsum. Quis cupidatat sunt aliquip
-          velit nostrud dolore sunt quis aliquip exercitation est excepteur duis
-          culpa. Enim tempor esse aliquip dolor minim fugiat aliquip sint duis
-          dolore incididunt est amet officia. Ut ipsum sit et incididunt magna
-          sit irure. Anim nisi ex elit occaecat enim ullamco voluptate sit
-          veniam irure magna. Est veniam anim deserunt culpa mollit proident
-          dolor commodo cillum ea nulla. Adipisicing proident deserunt laboris
-          consectetur aliquip aliquip non est. Culpa pariatur ea qui elit ad
-          enim reprehenderit eiusmod deserunt. Adipisicing officia proident
-          officia deserunt. Dolore consequat consequat tempor ut incididunt aute
-          elit voluptate velit enim qui ad. Et laborum labore dolor adipisicing
-          et ea tempor amet mollit consectetur sit ut.
+    <div className="about">
+      <div className="aboutHead">
+        <h2>
+          What is a ToDo List? The definition is a simple one. It's a list of
+          tasks you need to complete or things that you want to do. Most
+          typically, they're organised in order of priority. Traditionally,
+          they're written on a piece of paper or post it notes and act as a
+          memory aid. As technology has evolved we have been able to create a
+          todo lists with excel spreadsheets, word documents, email lists, todo
+          list apps, Microsoft to do and google to do list to name a few. You
+          can use a to do list in your home and personal life, or in the
+          workplace. Having a list of everything you need to do written down in
+          one place means you shouldn't forget anything important. By
+          prioritising the tasks in the list you plan the order in which you're
+          going to do them and can quickly see what needs your immediate
+          attention and what tasks you can leave until a little later.
         </h2>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -28,11 +28,11 @@ export default function Todos(props) {
           </h1>
           {props.name ? (
             <Link to="create">
-              <button>Create</button>
+              <button className="button">Create</button>
             </Link>
           ) : (
             <Link to="signup">
-              <button>SignUp</button>
+              <button className="button">SignUp</button>
             </Link>
           )}
         </div>

@@ -7,6 +7,7 @@ import { auth } from "./firebase";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const onComplete = (todo) => {
@@ -79,6 +80,7 @@ function App() {
         <Route path="create" element={<AddTodo addTodo={addTodo} />} />
         <Route path="about" element={<About />} />
       </Routes>
+      <Sidebar />
     </div>
   );
 }

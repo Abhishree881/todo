@@ -35,8 +35,9 @@ export default function Signup() {
     [navigate]
   );
   return (
-    <div className="form">
+    <div className="formm">
       <div className="create">
+        <h1>SignUp</h1>
         <form onSubmit={submit}>
           <div className="mb-3">
             <label className="form-label">Name</label>

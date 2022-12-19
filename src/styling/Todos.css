@@ -1,26 +1,43 @@
 .container{
-    border-radius: 10px;
-    padding: 5vh 1vh 1vh 1vh;
-    min-height: 89vh;
-    width: 80vw;
+    border-radius: 20px;
+    margin: 3vh 1.5vh 3vh 1.5vh;
+    height: 94vh;
     font: italic small-caps bold 16px/2 cursive;
-    background-color: beige;
-    box-shadow: 2px 5px 5px grey;
+    background-color: rgba(98, 218, 218, 0.088);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    
 }
-.head{
-    background-color: black;
+
+.container::-webkit-scrollbar{
+    width:5px;
+}
+
+
+.container::-webkit-scrollbar-thumb {
     border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.head{
+    background-color: #F1FDCD;
+    border-radius: 20px;
+    color: black;
     text-align: center; 
-    padding: 5px 10px 5px 10px;
-    box-shadow: 2px 5px 5px grey;
+    padding: .5vh 1vh .5vh 1vh;
+    border: 5px solid black;
+    margin: 2vh 2vh 2vh 2vh;
+    box-shadow: 1px 1px 4px wheat;
+    opacity: 0.8;
 }
 .noTodo{
     padding-top: 10vh;
-    color: grey;
+    color: aliceblue;
     text-align: center;
     font: italic small-caps bold 16px/2 cursive;
 }
-button{
+.button{
     background-color: black;
     cursor: pointer;
     font-size: 4vh;
@@ -32,11 +49,11 @@ button{
     text-align: center;
     font: italic small-caps bold 16px/2 cursive;    
     transition: 0.1s;
-    box-shadow: 5px 4px 4px grey;
+    /* box-shadow: 5px 4px 4px grey; */
 }
-button:hover{
+.button:hover{
     background-color: white;
     color: grey;
     border: navajowhite;
-    box-shadow: 5px 5px 5px navajowhite;
+    /* box-shadow: 5px 5px 5px navajowhite; */
 }

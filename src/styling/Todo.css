@@ -1,5 +1,5 @@
 .completed{
-    background-color: lightgreen;
+    background-color: rgb(61, 234, 75);
     border-radius: 30px;
     padding: 8px 25px 8px 25px;
     align-content: center;
@@ -9,23 +9,38 @@
     cursor: pointer;
     transition: 0.5s;
     margin-left: 1vw;
+    margin-bottom: 1vh;
 }
 .todo{
     margin: 1vw;
-    background-color: black;
+    /* background-color: #F1FDCD; */
+    background: linear-gradient(-45deg, rgba(225, 225, 213, 0.8), rgba(226, 222, 225, 0.8)) fixed, url(../components/bg.jpg) fixed;
+        background-size: cover;
     border-radius: 30px;
-    color:beige;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: center; */
+    color:black;
+    border: 5px solid black;
     padding: 1vw 2vw 1vw 2vw;
     margin: 2vh 5vw 2vh 5vw;
     width: auto;
     transition: 1s ease-in-out;
 }
+.todo h1{
+    padding: 0 0 0 1vw;
+}
+.todo h2{
+    padding: 0 0 0 1vw;
+    font-size: larger ;
+    /* overflow-x: hidden; */
+}
 .todo:hover{
-    background-color: white;
-    color: gray;
+    background-color: beige;
     border : navajowhite 1px solid;
-    box-shadow: 2px 5px 5px navajowhite;
+    box-shadow: 1px 1px 4px navajowhite;
 }
 .todo:hover .completed{
-    background-color: lawngreen;
+    background-color: rgb(32, 197, 38);
 }

@@ -4,8 +4,8 @@ import "../styling/Todo.css";
 export default function TodoItem({ todo, onComplete }) {
   return (
     <div className="todo">
-      <h4>{todo.title}</h4>
-      <h5>{todo.desc}</h5>
+      <h1>{todo.title}</h1>
+      <h2>{todo.desc}</h2>
       <div className="completed" onClick={() => onComplete(todo)}>
         Complete
       </div>
