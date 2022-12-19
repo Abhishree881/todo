@@ -4,30 +4,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 import "../styling/signup.css";
+import swal from "sweetalert";
 
 export default function Signup({ activeLink, onUpdateActiveLink }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!name || !email || !password) {
-      alert("Any field can not be blank");
+      // alert("Any field can not be blank");
+      swal("Blank Error", "Any field can not be blank", "error");
     } else {
       // props.addUser(name, email, password);
-      createUserWithEmailAndPassword(auth, email, password)
+      await createUserWithEmailAndPassword(auth, email, password)
         .then((res) => {
           //console.log(res);
           const user = res.user;
           updateProfile(user, { displayName: name });
           handleOnClick();
-          // window.location.reload();
+          onUpdateActiveLink("home");
+          window.location.reload();
+          swal("Signed Up", "You are now succesfully Logged In", "success");
         })
         .catch((err) => {
           //console.log(err);
-          alert(err.message);
+          // alert(err.message);
+          swal("Oops", err.message, "error");
         });
-      onUpdateActiveLink("home");
     }
   };
   let navigate = useNavigate();

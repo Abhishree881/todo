@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useCallback } from "react";
 import "../styling/create.css";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function AddTodo(props) {
   const [title, settitle] = useState("");
@@ -17,13 +18,20 @@ export default function AddTodo(props) {
       return date < today;
     }
     if (!title || !desc || !time) {
-      alert("Title or Description or Date can not be blank");
+      // alert("Title or Description or Date can not be blank");
+      swal(
+        "Blank Error",
+        "Title or Description or Date can not be blank",
+        "error"
+      );
     } else if (isInThePast(new Date(time))) {
-      alert("Date can not be in past");
+      // alert("Date can not be in past");
+      swal("Date Error", "Date can not be in past", "error");
     } else {
       props.onUpdateActiveLink("home");
       props.addTodo(title, desc, time);
       handleOnClick();
+      swal("Created", "The task has been succesfully created", "success");
     }
   };
   let navigate = useNavigate();

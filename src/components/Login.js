@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import "../styling/signup.css";
+import swal from "sweetalert";
 
 export default function Signup({ activeLink, onUpdateActiveLink }) {
   const [email, setEmail] = useState("");
@@ -11,7 +12,8 @@ export default function Signup({ activeLink, onUpdateActiveLink }) {
   const submit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Any field can not be blank");
+      // alert("Any field can not be blank");
+      swal("Blank Error", "Any field can not be blank", "error");
     } else {
       //   props.checkUser(email, password);
       signInWithEmailAndPassword(auth, email, password)
@@ -20,13 +22,15 @@ export default function Signup({ activeLink, onUpdateActiveLink }) {
           const user = res.user;
           console.log(user.displayName);
           handleOnClick();
+          onUpdateActiveLink("home");
           // window.location.reload();
+          swal("Logged In", "You are now succesfully Logged In", "success");
         })
         .catch((err) => {
           //console.log(err);
-          alert(err.message);
+          // alert(err.message);
+          swal("Oops", err.message, "error");
         });
-      onUpdateActiveLink("home");
     }
   };
   let navigate = useNavigate();
