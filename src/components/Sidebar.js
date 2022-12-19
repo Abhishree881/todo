@@ -10,7 +10,6 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <Calendar onChange={onChange} value={value} />
-      <div className="test">{/* <img src={logo} /> */}</div>
     </div>
   );
 }

@@ -38,7 +38,8 @@
     font: italic small-caps bold 16px/2 cursive;
 }
 .button{
-    background-color: black;
+    background: linear-gradient(to left, #32675c 0%, #689a77 100%);
+    opacity: 0.8;
     cursor: pointer;
     font-size: 4vh;
     border-radius: 30px;
@@ -47,13 +48,13 @@
     width: auto;
     color: whitesmoke;
     text-align: center;
+    border: none;
     font: italic small-caps bold 16px/2 cursive;    
     transition: 0.1s;
     /* box-shadow: 5px 4px 4px grey; */
 }
 .button:hover{
-    background-color: white;
-    color: grey;
+    background: url(../components/bg.jpg);
     border: navajowhite;
     /* box-shadow: 5px 5px 5px navajowhite; */
 }

@@ -20,7 +20,7 @@ code {
 }
 .App{
   display: grid;
-  grid-template-columns: [first] 15vw [line2] 60vw [line3] 25vw [end];
+  grid-template-columns: [first] 15vw [line2] 55vw [line3] 30vw [end];
   grid-template-rows: [row1-start] 50vh [row1-end] 50vh [last-line];
   /* flex-wrap: wrap;
   flex-direction: row; */
@@ -117,3 +117,12 @@ input[type=submit]:hover {
   font: italic small-caps bold 16px/2 cursive;
     /* box-shadow: 1px 1px 1px wheat; */
 }
+@media (max-width:1080px){
+  .main{
+    grid-column-start: first;
+      grid-column-end: end;
+      grid-row-start: row1-start;
+      grid-row-end: last-line;
+  }
+}
+

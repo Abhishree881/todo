@@ -57,13 +57,23 @@ export default function Navbar({ name }) {
           </Link>
         </div>
         <div className="nav">
-          <Link
-            className={activeLink === "create" ? "a active" : "a"}
-            onClick={() => onUpdateActiveLink("create")}
-            to="create"
-          >
-            Create
-          </Link>
+          {name ? (
+            <Link
+              className={activeLink === "create" ? "a active" : "a"}
+              onClick={() => onUpdateActiveLink("create")}
+              to="create"
+            >
+              Create
+            </Link>
+          ) : (
+            <Link
+              className={activeLink === "create" ? "a active" : "a"}
+              onClick={() => onUpdateActiveLink("login")}
+              to="signup"
+            >
+              Create
+            </Link>
+          )}
         </div>
         <div className="nav">
           <Link

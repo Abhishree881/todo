@@ -113,3 +113,13 @@ img {
     padding: 1vh 2vh 1vh 2vh;
     color: black;
 }
+@media (max-width:1180px) {
+    .active{
+        padding: 10px;
+    }
+}
+@media (max-width:1080px) {
+   .navbar{
+    display: none;
+   }
+}
