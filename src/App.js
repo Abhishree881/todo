@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
+import { db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 function App() {
   const onComplete = (todo) => {
@@ -17,7 +19,11 @@ function App() {
       })
     );
   };
-
+  const comp = (todos) => {
+    const Ref = doc(db, "users", userId);
+    setDoc(Ref, { todos: todos }, { merge: true });
+    console.log("updated");
+  };
   const addTodo = (title, desc, time) => {
     let sno;
     if (todos.length === 0) {
@@ -25,12 +31,7 @@ function App() {
     } else {
       sno = todos[todos.length - 1].sno + 1;
     }
-    const myTodo = {
-      sno: sno,
-      title: title,
-      desc: desc,
-      time: time,
-    };
+    const myTodo = { sno, title, desc, time };
     // console.log(sno, " ", myTodo);
     SetTodo((todos) => {
       return [...todos, myTodo];
@@ -66,6 +67,12 @@ function App() {
         // window.location.reload();
       } else SetUserName("");
     });
+  }, []);
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      return "Are you sure you want to leave?";
+    };
   }, []);
 
   const [activeLink, setActiveLink] = useState("home");
@@ -104,6 +111,7 @@ function App() {
               activeLink={activeLink}
               onUpdateActiveLink={onUpdateActiveLink}
               userId={userId}
+              comp={comp}
             />
           }
         />

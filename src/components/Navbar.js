@@ -7,6 +7,8 @@ import { getAuth, signOut } from "firebase/auth";
 import swal from "sweetalert";
 import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({
   name,
@@ -15,6 +17,11 @@ export default function Navbar({
   todos,
   userId,
 }) {
+  let navigate = useNavigate();
+  const handleOnClick = useCallback(
+    () => navigate("/", { replace: true }),
+    [navigate]
+  );
   return (
     <div className="navbar">
       <div className="nav-main">
@@ -45,6 +52,7 @@ export default function Navbar({
                       // An error happened.
                     });
                   todos.length = 0;
+                  handleOnClick();
                   console.log(todos);
                 }}
               >
