@@ -12,6 +12,7 @@ export default function Home(props) {
         onComplete={props.onComplete}
         activeLink={props.activeLink}
         onUpdateActiveLink={props.onUpdateActiveLink}
+        userId={props.userId}
       />
     </div>
   );

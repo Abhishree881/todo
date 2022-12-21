@@ -3,6 +3,9 @@ import { useCallback } from "react";
 import "../styling/create.css";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 export default function AddTodo(props) {
   const [title, settitle] = useState("");
@@ -30,6 +33,20 @@ export default function AddTodo(props) {
     } else {
       props.onUpdateActiveLink("home");
       props.addTodo(title, desc, time);
+      const add = async () => {
+        props.todos.map((todo) => {
+          console.log(todo);
+        });
+        // console.log(props.todos);
+        // try {
+        //   const Ref = doc(db, "users", props.userId);
+        //   await setDoc(Ref, { todos: props.todos }, { merge: true });
+        //   console.log("updated");
+        // } catch (e) {
+        //   console.log(e);
+        // }
+      };
+      add();
       handleOnClick();
       swal("Created", "The task has been succesfully created", "success");
     }

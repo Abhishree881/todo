@@ -5,12 +5,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import swal from "sweetalert";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Navbar({
   name,
   activeLink,
   onUpdateActiveLink,
   todos,
+  userId,
 }) {
   return (
     <div className="navbar">
@@ -26,6 +29,13 @@ export default function Navbar({
                 className="name"
                 onClick={() => {
                   const auth = getAuth();
+                  try {
+                    const Ref = doc(db, "users", userId);
+                    setDoc(Ref, { todos: todos }, { merge: true });
+                    console.log("updated");
+                  } catch (e) {
+                    console.log(e);
+                  }
                   signOut(auth)
                     .then(() => {
                       // Sign-out successful.
@@ -40,7 +50,7 @@ export default function Navbar({
               >
                 {`${name}`}{" "}
               </div>
-              <div className="hover">Click to Signout</div>
+              <div className="hover">Save and Signout</div>
             </>
           ) : (
             <Link

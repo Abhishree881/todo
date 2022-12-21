@@ -19,7 +19,7 @@ function App() {
   };
 
   const addTodo = (title, desc, time) => {
-    let sno = 0;
+    let sno;
     if (todos.length === 0) {
       sno = 1;
     } else {
@@ -31,11 +31,14 @@ function App() {
       desc: desc,
       time: time,
     };
-    SetTodo([...todos, myTodo]);
-    //console.log(todos);
+    // console.log(sno, " ", myTodo);
+    SetTodo((todos) => {
+      return [...todos, myTodo];
+    });
+    console.log(todos);
   };
 
-  const [todos, SetTodo] = useState("");
+  const [todos, SetTodo] = useState([]);
   //   [
   //   {
   //     sno: 1,
@@ -66,10 +69,18 @@ function App() {
   }, []);
 
   const [activeLink, setActiveLink] = useState("home");
+  const [userId, setUserId] = useState("");
+
+  const fixUserId = (value) => {
+    setUserId(value);
+  };
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
     // window.location.reload();
+  };
+  const onSign = (value) => {
+    SetUserName(value);
   };
 
   return (
@@ -79,6 +90,7 @@ function App() {
         activeLink={activeLink}
         onUpdateActiveLink={onUpdateActiveLink}
         todos={todos}
+        userId={userId}
       />
       <Routes>
         <Route
@@ -91,6 +103,7 @@ function App() {
               onComplete={onComplete}
               activeLink={activeLink}
               onUpdateActiveLink={onUpdateActiveLink}
+              userId={userId}
             />
           }
         />
@@ -100,6 +113,9 @@ function App() {
             <Signup
               activeLink={activeLink}
               onUpdateActiveLink={onUpdateActiveLink}
+              todos={todos}
+              onSign={onSign}
+              setUserId={fixUserId}
             />
           }
         />
@@ -109,6 +125,8 @@ function App() {
             <Login
               activeLink={activeLink}
               onUpdateActiveLink={onUpdateActiveLink}
+              setUserId={fixUserId}
+              addTodo={addTodo}
             />
           }
         />
@@ -119,6 +137,8 @@ function App() {
               addTodo={addTodo}
               activeLink={activeLink}
               onUpdateActiveLink={onUpdateActiveLink}
+              userId={userId}
+              todos={todos}
             />
           }
         />

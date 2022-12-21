@@ -5,8 +5,16 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 import "../styling/signup.css";
 import swal from "sweetalert";
+import { db } from "../firebase";
+import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
 
-export default function Signup({ activeLink, onUpdateActiveLink }) {
+export default function Signup({
+  activeLink,
+  onUpdateActiveLink,
+  todos,
+  onSign,
+  setUserId,
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,12 +28,25 @@ export default function Signup({ activeLink, onUpdateActiveLink }) {
       await createUserWithEmailAndPassword(auth, email, password)
         .then((res) => {
           //console.log(res);
-          const user = res.user;
+          const user = res?.user;
+          setUserId(user.uid);
+          // const db = getDatabase();
           updateProfile(user, { displayName: name });
           handleOnClick();
           onUpdateActiveLink("home");
-          window.location.reload();
+          onSign(name);
+          // window.location.reload();
           swal("Signed Up", "You are now succesfully Logged In", "success");
+          // console.log(user?.uid);
+          //
+          try {
+            setDoc(doc(db, "users", user.uid), {
+              name: name,
+            });
+            console.log(user.uid, " created ");
+          } catch (e) {
+            console.log(e);
+          }
         })
         .catch((err) => {
           //console.log(err);
@@ -81,7 +102,7 @@ export default function Signup({ activeLink, onUpdateActiveLink }) {
             />
           </div>
           Already have an account{" "}
-          <Link classname="user" to="/login">
+          <Link className="user" to="/login">
             Login
           </Link>
           <input type="submit" value="SignUp" />

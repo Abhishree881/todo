@@ -3,9 +3,17 @@ import TodoItem from "./TodoItem";
 import "../styling/Todos.css";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import { db } from "../firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import swal from "sweetalert";
+import { async } from "@firebase/util";
 
 export default function Todos(props) {
+  const add = async () => {
+    const Ref = doc(db, "users", props.userId);
+    await setDoc(Ref, { todos: props.todos }, { merge: true });
+    console.log("updated");
+  };
   return (
     <div className="container">
       {props.todos.length !== 0 ? (
@@ -18,6 +26,13 @@ export default function Todos(props) {
                   className="mobilename"
                   onClick={() => {
                     const auth = getAuth();
+                    try {
+                      const Ref = doc(db, "users", props.userId);
+                      setDoc(Ref, { todos: props.todos }, { merge: true });
+                      console.log("updated");
+                    } catch (e) {
+                      console.log(e);
+                    }
                     signOut(auth)
                       .then(() => {
                         // Sign-out successful.
@@ -30,25 +45,24 @@ export default function Todos(props) {
                     // console.log(todos);
                   }}
                 >
-                  {`${props.name}`}{" "}
+                  {`${props.name} Save and Signout`}{" "}
                 </div>
-                <div className="mobilehover">Click to Signout</div>
+                <div className="mobilehover">Click to Save and Signout</div>
               </>
             ) : (
               ""
             )}
           </div>
           {props.todos.map((todo) => {
+            // console.log("hello", todo);
+            add();
             return (
-              <>
-                <TodoItem
-                  todo={todo}
-                  key={todo.sno}
-                  onComplete={props.onComplete}
-                />
-              </>
+              <div key={todo.sno}>
+                <TodoItem todo={todo} onComplete={props.onComplete} />
+              </div>
             );
           })}
+
           <Link onClick={() => props.onUpdateActiveLink("create")} to="create">
             <button className="button">Create</button>
           </Link>
