@@ -128,9 +128,21 @@ input[type=submit]:hover {
   border-radius: 30px;
   color: black;
   background-color: #F1FDCD;
-  border: 5px solid black;
+  background: linear-gradient(to left, #32675c 0%, #689a77 100%); 
+  opacity: 0.8;
+  /* border: 5px solid black; */
   font: italic small-caps bold 16px/2 cursive;
     /* box-shadow: 1px 1px 1px wheat; */
+}
+.form-label{
+  background-clip: text;
+  background-image: url('./components/bg.jpg');
+  color: transparent;
+}
+.create h1{
+  background-clip: text;
+  background-image: url('./components/bg.jpg');
+  color: transparent;
 }
 @media (max-width:1080px){
   .main{
