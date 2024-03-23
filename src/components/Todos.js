@@ -3,17 +3,20 @@ import TodoItem from "./TodoItem";
 import "../styling/Todos.css";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
-import { db } from "../firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
 import swal from "sweetalert";
-import { async } from "@firebase/util";
 
 export default function Todos(props) {
-  const add = async () => {
-    const Ref = doc(db, "users", props.userId);
-    await setDoc(Ref, { todos: props.todos }, { merge: true });
-    console.log("updated");
-  };
+  const nameArray = props.name.split(" ");
+  let renderedName;
+  if (nameArray[0].length > 5) {
+    renderedName = <span>{nameArray[0]}</span>;
+  } else {
+    renderedName = (
+      <span>
+        {nameArray[0]} {nameArray[1]}
+      </span>
+    );
+  }
   return (
     <div className="container">
       {props.todos.length !== 0 ? (
@@ -26,13 +29,6 @@ export default function Todos(props) {
                   className="mobilename"
                   onClick={() => {
                     const auth = getAuth();
-                    try {
-                      const Ref = doc(db, "users", props.userId);
-                      setDoc(Ref, { todos: props.todos }, { merge: true });
-                      console.log("updated");
-                    } catch (e) {
-                      console.log(e);
-                    }
                     signOut(auth)
                       .then(() => {
                         // Sign-out successful.
@@ -45,7 +41,7 @@ export default function Todos(props) {
                     // console.log(todos);
                   }}
                 >
-                  {`${props.name} Save and Signout`}{" "}
+                  {renderedName} {" (Signout)"}
                 </div>
                 <div className="mobilehover">Click to Save and Signout</div>
               </>
@@ -54,8 +50,7 @@ export default function Todos(props) {
             )}
           </div>
           {props.todos.map((todo) => {
-            // console.log("hello", todo);
-            add();
+            // console.log("hello", todo)
             return (
               <div key={todo.sno}>
                 <TodoItem todo={todo} onComplete={props.onComplete} />
@@ -64,28 +59,33 @@ export default function Todos(props) {
           })}
 
           <Link onClick={() => props.onUpdateActiveLink("create")} to="create">
-            <button className="button">Create</button>
+            <button className="button">Create new task</button>
           </Link>
         </div>
       ) : (
         <div className="noTodo">
-          <h1 className="noTodoHead">
-            {props.name
-              ? "There are no tasks to display, start by creating one now :)"
-              : "There are no tasks to display, start by logging in now :)"}
-          </h1>
-          {props.name ? (
-            <Link
-              onClick={() => props.onUpdateActiveLink("create")}
-              to="create"
-            >
-              <button className="button">Create</button>
-            </Link>
-          ) : (
-            <Link to="signup" onClick={() => props.onUpdateActiveLink("login")}>
-              <button className="button">SignUp</button>
-            </Link>
-          )}
+          <div className="noTodoBody">
+            <h1 className="noTodoHead">
+              {props.name
+                ? "There are no tasks to display, start by creating one now :)"
+                : "There are no tasks to display, start by logging in now :)"}
+            </h1>
+            {props.name ? (
+              <Link
+                onClick={() => props.onUpdateActiveLink("create")}
+                to="create"
+              >
+                <button className="button">Create</button>
+              </Link>
+            ) : (
+              <Link
+                to="signup"
+                onClick={() => props.onUpdateActiveLink("login")}
+              >
+                <button className="button">SignUp</button>
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </div>

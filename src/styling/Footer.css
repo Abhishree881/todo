@@ -1,15 +1,16 @@
-.footer{
+.footer {
     bottom: 0vh;
     /* width: 80vw; */
     padding: 1vw;
     text-align: center;
     border-radius: 10px;
-    font: italic small-caps bold 16px/2 cursive;
+    font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to right, #32675c 0%, #689a77 100%);
     color: black;
     opacity: 0.7;
     margin: 2vw;
     position: fixed;
-    width:47.5vw;
+    width: 47.5vw;
+    display: none;
     /* box-shadow: 2px 5px 5px grey; */
 }

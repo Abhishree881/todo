@@ -5,9 +5,11 @@ import swal from "sweetalert";
 export default function TodoItem({ todo, onComplete }) {
   return (
     <div className="todo">
-      <h1>Task : {todo.title}</h1>
-      <h2>Description : {todo.desc}</h2>
-      <h2>Due Date : {todo.time}</h2>
+      <div>
+        <h4>Task : {todo.title}</h4>
+        <h5>Description : {todo.desc}</h5>
+        <h5>Due Date : {todo.time}</h5>
+      </div>
       <div
         className="completed"
         onClick={() => {

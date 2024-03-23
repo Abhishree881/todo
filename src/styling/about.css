@@ -1,7 +1,7 @@
-.about{
+.about {
     margin: 3vh 1.5vh 3vh 1.5vh;
     /* min-height: 81vh; */
-    font: italic small-caps bold 16px/2 cursive;
+    font-family: 'Montserrat', sans-serif;
     /* box-shadow: 2px 5px 5px grey; */
     border-radius: 10px;
     background-color: rgba(49, 210, 210, 0.088);
@@ -13,30 +13,29 @@
     grid-row-start: row1-start;
     grid-row-end: last-line;
 }
-.aboutHead{
-    border: solid black 5px ;
+
+.aboutHead {
+    /* border: solid black 5px; */
     color: black;
     border-radius: 20px;
     margin: 2vw;
     padding: 2vw;
     overflow-y: scroll;
     height: 69vh;
-    background-color: #F1FDCD;
+    background-color: #f0f0f0d5;
     text-align: justify;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* box-shadow: 2px 5px 5px grey; */
 }
-.aboutHead h2{
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-image: url('../components/bg.jpg');
-    color: transparent;
+
+.aboutHead h2 {
+    color: black;
+    font-weight: 400;
 }
+
 .aboutHead::-webkit-scrollbar {
-    width: 5px;
-}
-
-
-.aboutHead::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+    display: none;
 }

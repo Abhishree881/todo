@@ -1,46 +1,58 @@
-.completed{
+.completed {
     background-color: rgb(61, 234, 75);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 8px 25px 8px 25px;
     align-content: center;
-    width:auto;
-    color:whitesmoke;
+    width: auto;
+    color: black;
     text-align: center;
     cursor: pointer;
-    transition: 0.5s;
+    transition: all 0.2s ease-in;
     margin-left: 1vw;
     margin-bottom: 1vh;
 }
-.todo{
+
+.todo {
     margin: 1vw;
     /* background-color: #F1FDCD; */
-    background: linear-gradient(-45deg, rgba(225, 225, 213, 0.8), rgba(226, 222, 225, 0.8)) fixed, url(../components/bg.jpg) fixed;
-        background-size: cover;
-    border-radius: 30px;
+    background-color: #f0f0f0e8;
+
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     /* justify-content: center; */
-    color:black;
-    border: 5px solid black;
-    padding: 1vw 2vw 1vw 2vw;
+    color: black;
+    border: 2px solid black;
     margin: 2vh 5vw 2vh 5vw;
     width: auto;
-    transition: 1s ease-in-out;
+    transition: 0.2s ease-in-out;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    opacity: 1;
 }
-.todo h1{
-    padding: 0 0 0 1vw;
+
+.todo>div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
 }
-.todo h2{
-    padding: 0 0 0 1vw;
-    font-size: larger ;
+
+.todo h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.todo h5 {
+    margin: 0;
+    color: rgb(100, 100, 100);
+    font-size: 15px;
     /* overflow-x: hidden; */
 }
-.todo:hover{
-    background-color: beige;
-    border : navajowhite 1px solid;
-    box-shadow: 1px 1px 4px navajowhite;
-}
-.todo:hover .completed{
+
+.completed:hover {
     background-color: rgb(32, 197, 38);
+    color: aliceblue;
 }

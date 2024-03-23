@@ -9,15 +9,26 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
 import { db } from "./firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const onComplete = (todo) => {
     SetTodo(
       todos.filter((e) => {
         return e !== todo;
       })
     );
+    const updated = todos.filter((e) => {
+      return e !== todo;
+    });
+    try {
+      const Ref = doc(db, "users", userId);
+      setDoc(Ref, { todos: updated }, { merge: true });
+      console.log("updated");
+    } catch (e) {
+      console.log(e);
+    }
   };
   const comp = (todos) => {
     const Ref = doc(db, "users", userId);
@@ -36,44 +47,49 @@ function App() {
     SetTodo((todos) => {
       return [...todos, myTodo];
     });
-    console.log(todos);
+    const updated = [...todos, myTodo];
+    try {
+      const Ref = doc(db, "users", userId);
+      setDoc(Ref, { todos: updated }, { merge: true });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const [todos, SetTodo] = useState([]);
-  //   [
-  //   {
-  //     sno: 1,
-  //     title: "Complete React",
-  //     desc: "You need to complete react with alteast one project",
-  //   },
-  //   {
-  //     sno: 2,
-  //     title: "Complete node.js",
-  //     desc: "You need to complete node for backend",
-  //   },
-  //   {
-  //     sno: 3,
-  //     title: "Complete mongodb",
-  //     desc: "You need to complete mongodb for background",
-  //   },
-  // ]);
 
   const [userName, SetUserName] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        fixUserId(user.uid);
         SetUserName(user.displayName);
+        const Ref = doc(db, "users", user.uid);
+        getDoc(Ref).then((doc) => {
+          if (doc.exists()) {
+            const data = doc.data();
+            SetTodo(data.todos);
+            setLoading(false);
+          } else {
+            console.log("No such document!");
+            setLoading(false);
+          }
+        });
+
         // window.location.reload();
-      } else SetUserName("");
+      } else {
+        SetUserName("");
+        setLoading(false);
+      }
     });
   }, []);
 
-  useEffect(() => {
-    window.onbeforeunload = function () {
-      return "Are you sure you want to leave?";
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.onbeforeunload = function () {
+  //     return "Are you sure you want to leave?";
+  //   };
+  // }, []);
 
   const [activeLink, setActiveLink] = useState("home");
   const [userId, setUserId] = useState("");
@@ -90,7 +106,9 @@ function App() {
     SetUserName(value);
   };
 
-  return (
+  return loading ? (
+    <div className="loader">::Loading</div>
+  ) : (
     <div className="App">
       <Navbar
         name={userName}
