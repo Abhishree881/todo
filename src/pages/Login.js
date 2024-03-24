@@ -5,10 +5,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import "../assets/styling/signup.css";
 import swal from "sweetalert";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase";
 
-export default function Signup({ onUpdateActiveLink, setUserId, addTodo }) {
+export default function Signup({ onUpdateActiveLink, setUserId }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const submit = (e) => {
@@ -28,21 +26,6 @@ export default function Signup({ onUpdateActiveLink, setUserId, addTodo }) {
           onUpdateActiveLink("home");
           // window.location.reload();
           swal("Logged In", "You are now succesfully Logged In", "success");
-          const fetch = async () => {
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-            if (docSnap) {
-              console.log("Document data:", docSnap.data().todos);
-              docSnap.data().todos.forEach((todo) => {
-                console.log(todo.title, " ", todo.desc, " ", todo.time);
-                addTodo(todo.title, todo.desc, todo.time);
-              });
-            } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
-            }
-          };
-          fetch();
         })
         .catch((err) => {
           //console.log(err);
