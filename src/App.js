@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar";
-import AddTodo from "./components/AddTodo";
-import About from "./components/About";
-import Home from "./components/Home";
-import Signup from "./components/Signup";
+import AddTodo from "./pages/AddTodo";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
 import { auth } from "./firebase";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
 import { db } from "./firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";

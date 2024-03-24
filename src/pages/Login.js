@@ -1,52 +1,48 @@
 import React, { useState } from "react";
 import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import "../styling/signup.css";
+import "../assets/styling/signup.css";
 import swal from "sweetalert";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
 
-export default function Signup({
-  activeLink,
-  onUpdateActiveLink,
-  todos,
-  onSign,
-  setUserId,
-}) {
-  const [name, setName] = useState("");
+export default function Signup({ onUpdateActiveLink, setUserId, addTodo }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    if (!name || !email || !password) {
+    if (!email || !password) {
       // alert("Any field can not be blank");
       swal("Blank Error", "Any field can not be blank", "error");
     } else {
-      // props.addUser(name, email, password);
-      await createUserWithEmailAndPassword(auth, email, password)
+      //   props.checkUser(email, password);
+      signInWithEmailAndPassword(auth, email, password)
         .then((res) => {
           //console.log(res);
-          const user = res?.user;
+          const user = res.user;
           setUserId(user.uid);
-          // const db = getDatabase();
-          updateProfile(user, { displayName: name });
+          // console.log(user.displayName);
           handleOnClick();
           onUpdateActiveLink("home");
-          onSign(name);
           // window.location.reload();
-          swal("Signed Up", "You are now succesfully Logged In", "success");
-          // console.log(user?.uid);
-          //
-          try {
-            setDoc(doc(db, "users", user.uid), {
-              name: name,
-            });
-            console.log(user.uid, " created ");
-          } catch (e) {
-            console.log(e);
-          }
+          swal("Logged In", "You are now succesfully Logged In", "success");
+          const fetch = async () => {
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap) {
+              console.log("Document data:", docSnap.data().todos);
+              docSnap.data().todos.forEach((todo) => {
+                console.log(todo.title, " ", todo.desc, " ", todo.time);
+                addTodo(todo.title, todo.desc, todo.time);
+              });
+            } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+            }
+          };
+          fetch();
         })
         .catch((err) => {
           //console.log(err);
@@ -63,20 +59,8 @@ export default function Signup({
   return (
     <div className="formm">
       <div className="create">
-        <h1>SignUp</h1>
+        <h1>Login</h1>
         <form onSubmit={submit}>
-          <div className="mb-3">
-            <label className="form-label">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </div>
           <div className="mb-3">
             <label className="form-label">E-mail</label>
             <input
@@ -101,11 +85,11 @@ export default function Signup({
               }}
             />
           </div>
-          Already have an account{" "}
-          <Link className="user" to="/login">
-            Login
+          Don't have an acoount?{" "}
+          <Link className="user" to="/signup">
+            Signup
           </Link>
-          <input type="submit" value="SignUp" />
+          <input type="submit" value="Login" />
         </form>
       </div>
     </div>

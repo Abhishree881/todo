@@ -1,9 +1,10 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import "../styling/Todos.css";
+import "../assets/styling/Todos.css";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import swal from "sweetalert";
+import { LuListTodo } from "react-icons/lu";
 
 export default function Todos(props) {
   const nameArray = props.name.split(" ");
@@ -21,7 +22,11 @@ export default function Todos(props) {
     <div className="container">
       {props.todos.length !== 0 ? (
         <div className="mobile">
-          <h1 className="head">Your Tasks</h1>
+          <h1 className="head normalHead">Your Tasks</h1>
+          <h1 className="head mobileHead">
+            <LuListTodo />
+            Todo App
+          </h1>
           <div className="mobilesign">
             {props.name ? (
               <>
@@ -41,7 +46,7 @@ export default function Todos(props) {
                     // console.log(todos);
                   }}
                 >
-                  {renderedName} {" (Signout)"}
+                  {renderedName} {" | Signout"}
                 </div>
                 <div className="mobilehover">Click to Save and Signout</div>
               </>
@@ -50,11 +55,12 @@ export default function Todos(props) {
             )}
           </div>
           {props.todos.map((todo) => {
-            // console.log("hello", todo)
             return (
-              <div key={todo.sno}>
-                <TodoItem todo={todo} onComplete={props.onComplete} />
-              </div>
+              <TodoItem
+                key={todo.sno}
+                todo={todo}
+                onComplete={props.onComplete}
+              />
             );
           })}
 

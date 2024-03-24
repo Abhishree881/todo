@@ -1,12 +1,9 @@
 import React from "react";
-import "../styling/Navbar.css";
+import "../assets/styling/Navbar.css";
 // import logo from "./logo.jpg";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import swal from "sweetalert";
-import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LuListTodo } from "react-icons/lu";
@@ -59,63 +56,65 @@ export default function Navbar({ name, todos, userId }) {
   };
 
   return (
-    <div className="navbar">
-      <div className="nav-main">
-        <div className="img">
-          {/* <img src={logo} alt="logo" /> */}
-          <LuListTodo />
-          Todo App
-        </div>
-        <div className="login">
-          {name ? (
-            <div className="nav">
-              <div className="name" onClick={() => handleSignoutClick()}>
-                <IoPersonSharp />
-                {renderedName}
+    <>
+      <div className="navbar">
+        <div className="nav-main">
+          <div className="img">
+            {/* <img src={logo} alt="logo" /> */}
+            <LuListTodo />
+            Todo App
+          </div>
+          <div className="login">
+            {name ? (
+              <div className="nav">
+                <div className="name" onClick={() => handleSignoutClick()}>
+                  <IoPersonSharp />
+                  {renderedName}
+                </div>
+                <div className="hover">
+                  <PiSignOutBold />
+                  Signout
+                </div>
               </div>
-              <div className="hover">
-                <PiSignOutBold />
-                Signout
-              </div>
-            </div>
-          ) : (
-            <Link
-              className={
-                activeLink === "/login" || activeLink === "/signup"
-                  ? "a active"
-                  : "a"
-              }
-              to="signup"
-            >
-              Login | SignUp
+            ) : (
+              <Link
+                className={
+                  activeLink === "/login" || activeLink === "/signup"
+                    ? "a active"
+                    : "a"
+                }
+                to="signup"
+              >
+                Login | SignUp
+              </Link>
+            )}
+          </div>
+          <div className="nav">
+            <Link className={activeLink === "/" ? "a active" : "a"} to="/">
+              <FaHome />
+              Home
             </Link>
-          )}
-        </div>
-        <div className="nav">
-          <Link className={activeLink === "/" ? "a active" : "a"} to="/">
-            <FaHome />
-            Home
-          </Link>
-        </div>
-        <div className="nav">
-          <Link
-            className={activeLink === "/create" ? "a active" : "a"}
-            to={name ? "create" : "login"}
-          >
-            <TbBuildingStore />
-            Create
-          </Link>
-        </div>
-        <div className="nav">
-          <Link
-            className={activeLink === "/about" ? "a active" : "a"}
-            to="about"
-          >
-            <BsInfoCircleFill />
-            About
-          </Link>
+          </div>
+          <div className="nav">
+            <Link
+              className={activeLink === "/create" ? "a active" : "a"}
+              to={name ? "create" : "login"}
+            >
+              <TbBuildingStore />
+              Create
+            </Link>
+          </div>
+          <div className="nav">
+            <Link
+              className={activeLink === "/about" ? "a active" : "a"}
+              to="about"
+            >
+              <BsInfoCircleFill />
+              About
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

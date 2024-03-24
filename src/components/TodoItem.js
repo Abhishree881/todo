@@ -1,5 +1,5 @@
 import React from "react";
-import "../styling/Todo.css";
+import "../assets/styling/Todo.css";
 import swal from "sweetalert";
 
 export default function TodoItem({ todo, onComplete }) {

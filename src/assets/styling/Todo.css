@@ -56,3 +56,10 @@
     background-color: rgb(32, 197, 38);
     color: aliceblue;
 }
+
+@media (max-width:767px) {
+    .todo {
+        width: 90%;
+        margin: 1vh auto;
+    }
+}

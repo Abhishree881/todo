@@ -1,6 +1,6 @@
 // import Navbar from "./Navbar";
 // import Sidebar from "./Sidebar";
-import Todos from "./Todos";
+import Todos from "../components/Todos";
 import React from "react";
 
 export default function Home(props) {

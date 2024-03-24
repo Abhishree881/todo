@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "./Footer";
-import "../styling/about.css";
+// import Footer from "../components/Footer";
+import "../assets/styling/about.css";
 
 function About() {
   return (

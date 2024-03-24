@@ -38,16 +38,18 @@
     background-color: rgb(100, 100, 100, 0.5);
 }
 
-.react-calendar__tile--now {
-    background-color: #32675c;
-}
-
 .react-calendar__month-view__days__day--weekend {
     color: #d10000;
 }
 
-@media (max-width:1080px) {
-    .react-calendar {
+.react-calendar__tile--now {
+    background-color: #32675c;
+    background: url(../images/bg.jpg);
+    color: aliceblue;
+}
+
+@media (max-width:1280px) {
+    .sidebar {
         display: none;
     }
 

@@ -1,53 +1,52 @@
 import React, { useState } from "react";
 import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
-import "../styling/signup.css";
+import "../assets/styling/signup.css";
 import swal from "sweetalert";
-import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
 
 export default function Signup({
   activeLink,
   onUpdateActiveLink,
+  todos,
+  onSign,
   setUserId,
-  addTodo,
 }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
+    if (!name || !email || !password) {
       // alert("Any field can not be blank");
       swal("Blank Error", "Any field can not be blank", "error");
     } else {
-      //   props.checkUser(email, password);
-      signInWithEmailAndPassword(auth, email, password)
+      // props.addUser(name, email, password);
+      await createUserWithEmailAndPassword(auth, email, password)
         .then((res) => {
           //console.log(res);
-          const user = res.user;
+          const user = res?.user;
           setUserId(user.uid);
-          // console.log(user.displayName);
+          // const db = getDatabase();
+          updateProfile(user, { displayName: name });
           handleOnClick();
           onUpdateActiveLink("home");
+          onSign(name);
           // window.location.reload();
-          swal("Logged In", "You are now succesfully Logged In", "success");
-          const fetch = async () => {
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-            if (docSnap) {
-              console.log("Document data:", docSnap.data().todos);
-              docSnap.data().todos.forEach((todo) => {
-                console.log(todo.title, " ", todo.desc, " ", todo.time);
-                addTodo(todo.title, todo.desc, todo.time);
-              });
-            } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
-            }
-          };
-          fetch();
+          swal("Signed Up", "You are now succesfully Logged In", "success");
+          // console.log(user?.uid);
+          //
+          try {
+            setDoc(doc(db, "users", user.uid), {
+              name: name,
+            });
+            console.log(user.uid, " created ");
+          } catch (e) {
+            console.log(e);
+          }
         })
         .catch((err) => {
           //console.log(err);
@@ -64,8 +63,20 @@ export default function Signup({
   return (
     <div className="formm">
       <div className="create">
-        <h1>Login</h1>
+        <h1>SignUp</h1>
         <form onSubmit={submit}>
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+          </div>
           <div className="mb-3">
             <label className="form-label">E-mail</label>
             <input
@@ -90,11 +101,11 @@ export default function Signup({
               }}
             />
           </div>
-          Don't have an acoount?{" "}
-          <Link className="user" to="/signup">
-            Signup
+          Already have an account{" "}
+          <Link className="user" to="/login">
+            Login
           </Link>
-          <input type="submit" value="Login" />
+          <input type="submit" value="SignUp" />
         </form>
       </div>
     </div>

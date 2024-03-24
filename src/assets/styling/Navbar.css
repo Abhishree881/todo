@@ -89,7 +89,7 @@ img {
 .hover {
     opacity: 0;
     font-size: 1.5vh;
-    background-image: url('../components/bg.jpg');
+    background-image: url('../images/bg.jpg');
     color: white;
     padding: 4px 5px;
     display: flex;
@@ -122,22 +122,26 @@ img {
 .a:hover {
     color: white;
     cursor: pointer;
-    background: url('../components/bg.jpg');
+    background: url('../images/bg.jpg');
 }
 
 .active {
-    background: url('../components/bg.jpg');
+    background: url('../images/bg.jpg');
     /* padding: 1vh 2vh 1vh 2vh; */
     color: white;
 }
 
-@media (max-width:1180px) {
+@media (max-width:1280px) {
     .active {
         padding: 10px;
     }
+
+    .img {
+        font-size: 1.5rem;
+    }
 }
 
-@media (max-width:1080px) {
+@media (max-width:767px) {
     .navbar {
         display: none;
     }

@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: rgb(1, 1, 25); */
-  background-image: url(./components/bg.jpg);
+  background-image: url(./assets/images/bg.jpg);
   color: beige;
   max-height: 100vh;
   width: 100vw;
@@ -140,26 +140,43 @@ input[type=submit]:hover {
 
 .form-label {
   background-clip: text;
-  background-image: url('./components/bg.jpg');
+  background-image: url(./assets/images/bg.jpg);
   color: transparent;
 }
 
 .create h1 {
   background-clip: text;
-  background-image: url('./components/bg.jpg');
+  background-image: url(./assets/images/bg.jpg);
   color: transparent;
 }
 
-@media (max-width:1080px) {
+@media (max-width:1280px) {
+  .App {
+    grid-template-columns: [first] 22vw [line2] 48vw [line3] 30vw [end];
+  }
+
   .main {
-    grid-column-start: first;
     grid-column-end: end;
-    grid-row-start: row1-start;
     grid-row-end: last-line;
+  }
+}
+
+@media (max-width:1080px) {
+  .App {
+    grid-template-columns: [first] 26vw [line2] 45vw [line3] 30vw [end];
   }
 
   .create {
     padding: 2vh;
     width: 90vh
+  }
+}
+
+@media (max-width:767px) {
+  .main {
+    grid-column-start: first;
+    grid-column-end: end;
+    grid-row-start: row1-start;
+    grid-row-end: last-line;
   }
 }
